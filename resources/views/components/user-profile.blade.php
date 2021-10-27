@@ -176,7 +176,9 @@
             printWindow.document.close();
             // var academicPart = printWindow.document.getElementById("academic-part");
             // academicPart.appendChild(resultTable);
-            printWindow.print();
+            setTimeout(() => {
+              printWindow.print();
+            }, 500);
           });
         </script>
       @endif
