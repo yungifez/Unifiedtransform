@@ -2,67 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ExamStoreRequest;
-use App\Models\Exam;
 use Illuminate\Http\Request;
-use App\Traits\SchoolSession;
-use App\Interfaces\SemesterInterface;
-use App\Interfaces\SchoolClassInterface;
-use App\Interfaces\SchoolSessionInterface;
-use App\Repositories\AssignedTeacherRepository;
-use App\Repositories\ExamRepository;
+use App\Services\Exam\ExamService;
+use App\Http\Requests\Exam\CreateExamRequest;
 
 class ExamController extends Controller
 {
-    use SchoolSession;
+    protected $examService;
 
-    protected $schoolClassRepository;
-    protected $semesterRepository;
-    protected $schoolSessionRepository;
-
-    public function __construct(SchoolSessionInterface $schoolSessionRepository, SchoolClassInterface $schoolClassRepository, SemesterInterface $semesterRepository)
-    {
-        $this->schoolSessionRepository = $schoolSessionRepository;
-        $this->schoolClassRepository = $schoolClassRepository;
-        $this->semesterRepository = $semesterRepository;
+    public function __construct(ExamService $examService){
+        $this->examService = $examService;
     }
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $class_id = $request->query('class_id', 0);
-        $semester_id = $request->query('semester_id', 0);
+        $exams = $this->examService->getLatestExamsBySchoolIdWithPagination();
+        return view('exams.all',compact('exams'));
+    }
 
-        $current_school_session_id = $this->getSchoolCurrentSession();
+    public function indexActive(){
+        $exams = $this->examService->getActiveExamsBySchoolId();
+        $this->examService->examIds = $exams->pluck('id')->toArray();
+        $courses = $this->examService->getCoursesByExamIds();
 
-        $semesters = $this->semesterRepository->getAll($current_school_session_id);
-
-        $school_classes = $this->schoolClassRepository->getAllBySession($current_school_session_id);
-
-        $examRepository = new ExamRepository();
-
-        $exams = $examRepository->getAll($current_school_session_id, $semester_id, $class_id);
-
-        $assignedTeacherRepository = new AssignedTeacherRepository();
-
-        $teacher_id = (auth()->user()->role == "teacher")?auth()->user()->id : 0;
-
-        $teacherCourses = $assignedTeacherRepository->getTeacherCourses($current_school_session_id, $teacher_id, $semester_id);
-
-        $data = [
-            'current_school_session_id' => $current_school_session_id,
-            'semesters'                 => $semesters,
-            'classes'                   => $school_classes,
-            'exams'                     => $exams,
-            'teacher_courses'           => $teacherCourses,
-        ];
-
-        return view('exams.index', $data);
+        return view('exams.active',compact('exams','courses'));
     }
 
     /**
@@ -72,59 +39,38 @@ class ExamController extends Controller
      */
     public function create()
     {
-        $current_school_session_id = $this->getSchoolCurrentSession();
-
-        $semesters = $this->semesterRepository->getAll($current_school_session_id);
-
-        if(auth()->user()->role == "teacher") {
-            $teacher_id = auth()->user()->id;
-            $assigned_classes = $this->schoolClassRepository->getAllBySessionAndTeacher($current_school_session_id, $teacher_id);
-
-            $school_classes = [];
-            $i = 0;
-
-            foreach($assigned_classes as $assigned_class) {
-                $school_classes[$i] = $assigned_class->schoolClass;
-                $i++;
-            }
-        } else {
-            $school_classes = $this->schoolClassRepository->getAllBySession($current_school_session_id);
-        }
-
-        $data = [
-            'current_school_session_id' => $current_school_session_id,
-            'semesters'                 => $semesters,
-            'classes'                   => $school_classes,
-        ];
-
-        return view('exams.create', $data);
+        $classes = $this->examService->getClassesBySchoolId();
+        $already_assigned_classes = $this->examService->getAlreadyAssignedClasses();
+        return view('exams.add',compact('classes','already_assigned_classes'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ExamStoreRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExamStoreRequest $request)
+    public function store(CreateExamRequest $request)
     {
-        try {
-            $examRepository = new ExamRepository();
-            $examRepository->create($request->validated());
-
-            return back()->with('status', 'Exam creation was successful!');
-        } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
+        
+        $this->examService->request = $request;
+        try{
+            $this->examService->storeExam();
+        } catch (\Exception $e){
+            return 'Error: '. $e->getMessage();
         }
+        
+        //return $this->cindex($course_id, $exam_id, $teacher_id);
+        return back()->with('status', __('Created'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Exam $exam)
+    public function show($id)
     {
         //
     }
@@ -132,10 +78,10 @@ class ExamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Exam $exam)
+    public function edit($id)
     {
         //
     }
@@ -144,29 +90,51 @@ class ExamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Exam  $exam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'exam_id' => 'required|numeric',
+        ]);
+        try{
+            $this->examService->request = $request;
+            $this->examService->updateExam();
+        } catch (\Exception $e){
+            return 'Error: '. $e->getMessage();
+        }
+        return back()->with('status', __('Saved'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    private function assignCoursesToExam()
+    {
+    //   $request->validate([
+    //     'course_id' => 'required|numeric',
+    //     'exam_id' => 'required|numeric',
+    //   ]);
+        
+        // $tb = Course::find($request->course_id);
+        // $tb->exam_id = $request->exam_id;
+        // $tb->save();
+        // return back()->with('status', 'Saved');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Exam  $exam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        try {
-            $examRepository = new ExamRepository();
-            $examRepository->delete($request->exam_id);
-
-            return back()->with('status', 'Exam deletion was successful!');
-        } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
-        }
+        //
     }
 }

@@ -2,40 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Course;
+use App\Course;
+use App\Http\Resources\CourseResource;
 use Illuminate\Http\Request;
-use App\Traits\SchoolSession;
-use App\Interfaces\CourseInterface;
-use App\Http\Requests\CourseStoreRequest;
-use App\Interfaces\SchoolSessionInterface;
-use App\Repositories\PromotionRepository;
+use App\Http\Requests\Course\SaveConfigurationRequest;
+use App\Http\Traits\GradeTrait;
+use App\Services\Course\CourseService;
 
 class CourseController extends Controller
 {
-    use SchoolSession;
-    protected $schoolCourseRepository;
-    protected $schoolSessionRepository;
+    use GradeTrait;
+    protected $courseService;
 
-    /**
-    * Create a new Controller instance
-    * 
-    * @param CourseInterface $schoolCourseRepository
-    * @return void
-    */
-    public function __construct(SchoolSessionInterface $schoolSessionRepository, CourseInterface $schoolCourseRepository) {
-        $this->schoolSessionRepository = $schoolSessionRepository;
-        $this->schoolCourseRepository = $schoolCourseRepository;
+    public function __construct(CourseService $courseService){
+      $this->courseService = $courseService;
     }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($teacher_id, $section_id){
+      if($this->courseService->isCourseOfTeacher($teacher_id)) {
+        $courses = $this->courseService->getCoursesByTeacher($teacher_id);
+        $exams = $this->courseService->getExamsBySchoolId();
+        $view = 'course.teacher-course';
+
+      } else if($this->courseService->isCourseOfStudentOfASection($section_id)) {
+        $courses = $this->courseService->getCoursesBySection($section_id);
+        $view = 'course.class-course';
+        $exams = [];
+
+      } else if($this->courseService->isCourseOfASection($section_id)) {
+        $courses = $this->courseService->getCoursesBySection($section_id);
+        $exams = $this->courseService->getExamsBySchoolId();
+        $view = 'course.class-course';
+      } else {
+        return redirect('home');
+      }
+      return view($view,compact('courses','exams'));
     }
 
     /**
@@ -49,86 +54,99 @@ class CourseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  CourseStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseStoreRequest $request)
+    public function course($teacher_id,$course_id,$exam_id,$section_id)
     {
-        try {
-            $this->schoolCourseRepository->create($request->validated());
+      $this->addStudentsToCourse($teacher_id,$course_id,$exam_id,$section_id);
+      $students = $this->courseService->getStudentsFromGradeByCourseAndExam($course_id, $exam_id);
 
-            return back()->with('status', 'Course creation was successful!');
-        } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
-        }
+      return view('course.students', compact('students','teacher_id','section_id'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+      try{
+        $this->courseService->addCourse($request);
+      } catch (\Exception $ex){
+        return __('Could not add course.');
+      }
+      return back()->with('status', __('Created'));
+    }
+
+    /**
+     * @param SaveConfigurationRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function saveConfiguration(SaveConfigurationRequest $request){
+      try{
+        $this->courseService->saveConfiguration($request);
+      } catch (\Exception $ex){
+        return __('Could not save configuration.');
+      }
+      return back()->with('status', __('Saved'));
     }
 
     /**
      * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getStudentCourses($student_id) {
-        $current_school_session_id = $this->getSchoolCurrentSession();
-        $promotionRepository = new PromotionRepository();
-        $class_info = $promotionRepository->getPromotionInfoById($current_school_session_id, $student_id);
-        $courses = $this->schoolCourseRepository->getByClassId($class_info->class_id);
-
-        $data = [
-            'class_info'    => $class_info,
-            'courses'       => $courses,
-        ];
-        return view('courses.student', $data);
+    public function show($id)
+    {
+      return new CourseResource(Course::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  $course_id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($course_id)
+    public function edit($id)
     {
-        $current_school_session_id = $this->getSchoolCurrentSession();
-
-        $course = $this->schoolCourseRepository->findById($course_id);
-
-        $data = [
-            'current_school_session_id' => $current_school_session_id,
-            'course'                    => $course,
-            'course_id'                 => $course_id,
-        ];
-
-        return view('courses.edit', $data);
+      $course = Course::find($id);
+      return view('course.edit', ['course'=>$course]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function updateNameAndTime(Request $request, $id)
     {
-        try {
-            $this->schoolCourseRepository->update($request);
-
-            return back()->with('status', 'Course update was successful!');
-        } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
-        }
+      $request->validate([
+        'course_name' => 'required|string',
+        'course_time' => 'required|string',
+      ]);
+      $this->courseService->updateCourseInfo($id, $request);
+      return back()->with('status', __('Saved'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
-        //
+      return (Course::destroy($id))?response()->json([
+        'status' => 'success'
+      ]):response()->json([
+        'status' => 'error'
+      ]);
     }
 }

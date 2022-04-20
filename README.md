@@ -1,9 +1,4 @@
 <h1 align="center"><img src="public/appname.svg" width="500"></h1>
-
-## Version 2.X is here!!
-
-For Version 1.X, view [releases](https://github.com/changeweb/Unifiedtransform/releases).
-</p>
 <p align="center">
 School Management and Accounting Software
 </p>
@@ -13,7 +8,7 @@ School Management and Accounting Software
 [![Code Climate](https://codeclimate.com/github/changeweb/Unifiedtransform/badges/gpa.svg)](https://codeclimate.com/github/changeweb/Unifiedtransform)
 [![Latest release](https://img.shields.io/github/release/changeweb/Unifiedtransform/all.svg)](https://github.com/changeweb/Unifiedtransform/releases)
 [![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/1362-shield.svg)](https://madewithlaravel.com/p/unifiedtransform/shield-link)
-[![Discord](https://img.shields.io/discord/917848091107946556)](https://discord.gg/8sz6kpup99)
+[![Join the chat at https://gitter.im/Unifiedtransform](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Unifiedtransform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 We like to challenge the quality of what we build to make it better. To do so, we try to make the product intuitive, beautiful, and user friendly. Innovation and hard work help to fulfill these requirements. I believe in order to innovate we need to think differently. A few months ago I discovered there was no open source free school management software that met my quality standards. I happen to know a bit of programming so I decided to make one. I also believe that working with more people can push the standard higher than working alone. So I decided to make it open source and free.
 
@@ -23,364 +18,391 @@ See the news [here](https://laravel-news.com/unified-transform-open-source-schoo
 
 ## Framework used
 
-- Laravel 8.X
-- Bootstrap 5.X
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-39-17 Unifiedtransform.png"></h1>
+- Laravel 7.X
+- Bootstrap 3.3.7
 
 ## Server Requirements
 
-- PHP >= 7.4
+- PHP >= 7.3
 - OpenSSL PHP Extension
 - PDO PHP Extension
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 - XML PHP Extension
 
-## Testing
-
-- We want testable softwares. Most parts of the software in the previous version 1.x were covered by tests. Lets cover version 2.x as well. You also can contribute by writing test case!
-- To run Feature and Unit Tests run following commands:
-
-    ```sh
-    $ docker exec -it app sh
-    // Inside container shell
-    :/# php artisan test
-    ```
-
-## License
-
-GNU General Public License v3.0
+## Table of Contents
+- [Features](https://github.com/changeweb/Unifiedtransform#features)
+- [What's New](https://github.com/changeweb/Unifiedtransform#what-snew)
+- [Framework used](https://github.com/changeweb/Unifiedtransform#framework-used)
+- [Server Requirements](https://github.com/changeweb/Unifiedtransform#server-requirements)
+- [How to Start (Installation)](https://github.com/changeweb/Unifiedtransform#how-to-start)
+  - [Using Docker Container](https://github.com/changeweb/Unifiedtransform#using-docker-container)
+  - [Not using a Container](https://github.com/changeweb/Unifiedtransform#not-using-a-container)
+  - [Video Tutorial](https://github.com/changeweb/Unifiedtransform#video-tutorial)
+- [Optional](https://github.com/changeweb/Unifiedtransform#optional)
+- [Testing](https://github.com/changeweb/Unifiedtransform#testing)
+- [Stripe setup](https://github.com/changeweb/Unifiedtransform#stripe-setup)
+- [Create a school and an admin](https://github.com/changeweb/Unifiedtransform#create-a-school-and-an-admin)
+- [Manage a school](https://github.com/changeweb/Unifiedtransform#manage-a-school)
+- [Basic Steps by Serial](https://github.com/changeweb/Unifiedtransform#basic-steps-by-serial)
+- [Manage Exam (In exam manage page) by Admin](https://github.com/changeweb/Unifiedtransform#manage-exam-in-exam-manage-page-by-admin)
+- [Manage GPA and Grade](https://github.com/changeweb/Unifiedtransform#manage-gpa-and-grade)
+- [Good to know](https://github.com/changeweb/Unifiedtransform#good-to-know)
+- [Screenshots](https://github.com/changeweb/Unifiedtransform#here-are-some-screenshots)
 
 ## Contribute
 
 Unifiedtransform is 100% open source and free forever!!
 
-Community contribution can make this product better!!
+Community contribution can make this product better!! See [Contribution guideline](https://github.com/changeweb/Unifiedtransform/blob/master/CONTRIBUTING.md) before making any Pull request.
 
 When you contribute to a Github project you agree with this terms of [Github Terms of Service(Contributions Under Repository License)](https://help.github.com/en/articles/github-terms-of-service#6-contributions-under-repository-license).
 
 Since this project is under **GNU General Public License v3.0**, according to Github's Terms of Service all your contributions are also under the same license terms.
 Thus you permit the user of this software to use your contribution under the terms of **GNU General Public License v3.0**.
 
+### Contributors Hall of Fame
+[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/0)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/0)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/1)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/1)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/2)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/2)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/3)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/3)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/4)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/4)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/5)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/5)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/6)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/6)[![](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/images/7)](https://sourcerer.io/fame/changeweb/changeweb/Unifiedtransform/links/7)
+
+## Testing
+
+- We want testable softwares. Most parts of the software are covered by tests. You also can contribute by writing test case!
+- To run Feature and Unit Tests use `./vendor/bin/phpunit`.
+- To run Browser Tests copy `.env.dusk.example` to `.env.dusk.local` and set `APP_KEY` with same token to environment variable in your `.env` file and run `php artisan serve --env=dusk.local` for execute the server then run `php artisan dusk`.
+
+## License
+
+GNU General Public License v3.0
+
 ## Whats New
-v2.X is built from scratch. Both UI and internal workflow of the application are changed to a better design.
 
-## Features yet to be migrated from v1.X to v2.X
-Following features that exist in v1.X will be added in v2.X as well in future.
+- Certificate Upload Feature is added.
+   - Admin can upload certificate to a student using student code.
+   - Students can see their certificates link from Left Navigation bar.
+- Now students can also go to their Notifications(Teacher's Message) from Left Navigation bar.
 
-- Stripe payment
-- Messaging
-- Managing library
-- Managing Income and Expenses
-- Mass student and teachers export and import.
-- Printing reports
-- Managing certificates.
-- Supported other languages (Spanish, ...).
+## Features
+
+This software has following features:
+
+| Feature | Description |
+|---------|-------------|
+| Roles  | Master, Admin, Teacher, Student, Librarian, Accountant.|
+|| **(You can Impersonate User Roles in Development environment)** See how [Impersonation](https://github.com/changeweb/Unifiedtransform/pull/118) works. Cool !!|
+| Certificate | Now you can upload certificate to a student using student code. |
+| Payment |**[Stripe](http://stripe.com/)** is used. See configuration below.|
+||Students can pay from their accounts.|
+||Student can view payment receipts (history)|
+||View Screenshot below|
+|Attendance|Take student attendance for each course|
+|Mark|Can give marks to students for each course|
+|Registration|Register students|
+|Notice, Syllabus|Manage uploaded Notices, Syllabus, Routines|
+|Library|Manage a library of books.|
+||Add new books.|
+||Keep track of books.|
+|Exam|Manage Semester by Examination|
+|Grade|Give Grades based on marks of each course.|
+|Accounts|Manage Income, Expense Amounts|
+||View Graphs based on year.|
+|Messaging|Uses CKEditor 5|
+|Export/Import|  Users (Students, Teachers) from/to **Excel**|
+||[Laravel Excel](https://github.com/maatwebsite/Laravel-Excel) package is used.|
+||**Important:** Single sheet supported in an Excel file. So delete any extra sheet in an Excel file.|
+||Following excel column  names supported for both Teachers and Students: `name, email, password, address, about, phone_number, blood_group, nationality, gender`.|
+||Other columns:|
+||For Teachers: `department`, (`class, section`) if assigned as class teacher.|
+||For Students: `class, section, session, version, group, birthday, religion, father_name, father_phone_number, father_national_id, father_occupation, father_designation, father_annual_income, mother_name, mother_phone_number, mother_national_id, mother_occupation, mother_designation, mother_annual_income`|
+||For any number(e.g: phone_number) starts with zero, put (') before zero.|
+|Supported Languages|English, Spanish|
+||To set default Language and Timezone, Edit as following in `config/app.php`:|
+
+    'timezone' => 'Asia/Dhaka',//'UTC',
+    'locale' => 'en',//'es-MX' for Spanish
 
 ## How to Start
 ### Using Docker Container:
 
 **[Docker](https://www.docker.com/)** is now supported and improved.
 
-[How To Set Up Laravel, Nginx, and MySQL With Docker Compose on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-on-ubuntu-20-04)
-
 With the improved Docker setup, you will get:
 - Nginx
 - PHP 7.4
-- MySQL 5.7
+- MySQL 8
+- PHPMyAdmin
+- Composer commands: access composer commands directly without entering the container
+- Artisan commands: access artisan commands directly without entering the container
 
-### Steps to install:
-1. Clone or donwload the repository.
-2. Create **purify** folder in `storage/app/` directory.
-3. Run `cp .env.example .env`.
-4. Run `docker-compose up -d`.
-5. Run `docker exec -it db sh`. Inside the shell, run:
+In a nutshell, you only need to install Docker as well as `docker-compose` on your (host) machine and let Docker does the rest
 
-    ```sh
-    :/# mysql -u root -p
-    ```
+#### Step to install:
 
-    Mysql **Root password**: `your_mysql_root_password` in the `docker-compose.yml` file. Then run following commands:
+1. Run `cp .env.example .env`
+2. If you think the default setting are pretty well setup, you can run `./docker-install.sh` right away from your terminal. 
+3. Otherwise, read a section below for further information about properties you may change.
+4. Run `./docker-install.sh`
 
-    ```sql
-    mysql> SHOW DATABASES;
-    mysql> GRANT ALL ON unifiedtransform.* TO 'unifiedtransform'@'%' IDENTIFIED BY 'secret';
-    mysql> FLUSH PRIVILEGES;
-    mysql> EXIT;
-    ```
-6. Finally, exit the container by running `exit` in the container shell.
-7. Run `docker exec -it app sh`. Inside the shell, run following commands:
+#### Note
 
-    ```sh
-    :/# composer install
-    :/# php artisan key:generate
-    :/# php artisan config:cache
-    :/# php artisan migrate:fresh --seed
-    ```
+Here are `.env` properties you can change: 
 
-    Then exit from the container.
-8. Visit **http://localhost:8080**. Admin login credentials:
+- Common Laravel `.env` properties
+- `DOCKER_WEBSERVER_HOST` defines the Unifiedtransform port address. default value: `4049`
+- `DOCKER_PHPMYADMIN_HOST` defines the PHPMyAdmin port address. default value: `5051` 
 
-    - Email: admin@ut.com
-    - Password: password
+You can also customize:
 
-## Steps to follow:
-Please carefully follow the steps to setup the school.
+- `DB_DATABASE`: the database name
+- `DB_USERNAME`: the database username. Fill it other than `root` otherwise you will get trouble ahead
+- `DB_PASSWORD`: the database password 
 
-**Role: Admin**
+And it will be reflected on the database credentials after Docker is finished installing.
 
-**School Dashboard**
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-27-05 Unifiedtransform.png"></h1>
+#### Added Utility Scripts for Working With docker-compose
 
-### 1. Create a School Session:
-After logging in for the first time, you will see following message at the top nav bar.
+Under this project, there is an executable called `dev`. 
+It contains utility scripts which really comes in handy when you are working with the Docker app, especially `docker-compose` scripts cause it shortens some of `docker-compose` scripts.
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-31-38 Unifiedtransform.png"></h1>
+Available commands:
+- `dev composer <commands>` stands for `docker-compose run --rm composer <commands>`
+- `dev artisan <commands>` stands for `docker-compose run --rm artisan <commands>`
+- `dev rebuild <service>` to rebuild some services defined in the `docker-compose.yml`
 
-To create a new session, go to **Academic Settings** page.
+Really saving your time, isn't it?
 
-#### Academic Settings page:
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-32-44 Unifiedtransform.png"></h1>
+### Not using a Container:
 
-Successful creation of session using following form will display success message:
+Here is a latest article about [Manual installation in Windows 10](https://github.com/changeweb/Unifiedtransform/issues/315#issuecomment-889040823).
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-33-45 Unifiedtransform.png"></h1>
+Here are some basic steps to start using this application
 
-### 2. Create a Semester
-Now create a semester. A semester duration usually is 3 - 6 months.
+**Note:** Instruction on cached data for Dashboard is given in **Good to know** segment below.
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-34-45 Unifiedtransform.png"></h1>
+- Clone the repository
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-36-39 Unifiedtransform.png"></h1>
+```sh
+git clone https://github.com/changeweb/Unifiedtransform
+```
 
-### 3. Create classes
-Now create classes. Give common names such as: **Class 1** or **Class 11 (Science)**.
+- Copy the contents of the `.env.example` file to create `.env` in the same directory
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-35-16 Unifiedtransform.png"></h1>
+- Run `composer install` for `developer` environment and run `composer install --optimize-autoloader --no-dev` for `production` environment to install Laravel packages (Remove **Laravel Debugbar**, **Laravel Log viewer** packages from **composer.json** and 
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-37-26 Unifiedtransform.png"></h1>
+```php
+   //Provider
+   Barryvdh\Debugbar\ServiceProvider,
+   Logviewer Service provider,
+   //Alias
+   'Debugbar' => Barryvdh...
+```
+ from `config/app.php` before running **`composer install`** in **Production Environment**)
 
-### 4. Create sections
-Now create sections for each classes. Give section's name (e.g.: Section A, Section B), room number and assign them to respective class.
+- Generate `APP_KEY` using `php artisan key:generate`
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-36-27 Unifiedtransform.png"></h1>
+- Edit the database connection configuration in .env file e.g.
 
-### 5. Create Courses
-Now create courses and assign them to respective semester and class.
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=unifiedtransform
+DB_USERNAME=unified
+DB_PASSWORD=secret
+```
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-38-13 Unifiedtransform.png"></h1>
+> Note that this is just an example, and the values may vary depending on your database environment.
 
-### 6. Set attendance type
-Attendance can be maintained in two ways: 1. By section, 2. By course. Stick to one type for a semester. Default: **By section**.
+- Set the `APP_ENV` variable in your `.env` file according to your application environment (e.g. local, production) in `.env` file
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-37-09 Unifiedtransform.png"></h1>
+- Migrate your Database with `php artisan migrate`
 
-### 7. Add teachers
-Now add teachers.
+- Seed your Database with `php artisan db:seed`
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-11-34 Unifiedtransform.png"></h1>
+- On localhost, serve your application with `php artisan serve`
 
-### 8. Assign teacher
-Now assign teachers to semester, class, section, and course.
+## Video Tutorial
+> See **[Video Tutorial](https://vimeo.com/334331502)**.
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-12-05 Unifiedtransform.png"></h1>
+[![Video Tutorial](https://user-images.githubusercontent.com/9896315/57624079-fbc30000-75b2-11e9-80b8-9bf92de3b1ac.png)](https://vimeo.com/334331502 "Unifiedtransform Installation")
 
-### 9. Add students
-Now add students and assign them to class, and section.
+## (Optional)
 
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-43-37 Unifiedtransform.png"></h1>
+- [Laravel Page Speed Package](https://github.com/renatomarinho/laravel-page-speed) is installed but not activated. If you want to use it to optimize your site automatically which results in a 35%+ optimization. You need to uncomment some lines from `Kernel.php` file and may need to run `php artisan vendor:publish --provider="RenatoMarinho\LaravelPageSpeed\ServiceProvider"`.
 
-### 10. View added teachers and students
-Now browse to **View Teachers** and **View Students** pages.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-55-18 Unifiedtransform.png"></h1>
-
-### 11. View student and teacher profile
-Now browse to **Profile** from student and teacher list.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 18-29-30 Unifiedtransform.png"></h1>
-
-### 12. View and Edit Classes and Sections
-Now go to **Classes**. Here you can view all classes and their respective sections, syllabi, and courses. Classes, sections, and courses can be edited from here.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-30-30 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-30-55 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-31-14 Unifiedtransform.png"></h1>
-
-### 13. Create Grading Systems
-Now create grading system for each class and a semester.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-32-31 Unifiedtransform.png"></h1>
-
-### 14. View Grading Systems
-Now browse to created Grading Systems.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-33-23 Unifiedtransform.png"></h1>
-
-### 15. Add and view Grading System Rules
-Now add rules to the grading system and browse them.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-33-36 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 12-16-04 Unifiedtransform.png"></h1>
-
-### 16. Add Notices
-Admin can add notice. Right now, notices can be written using a rich text editor.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-03-55 Unifiedtransform.png"></h1>
-
-### 17. Create Events
-Events can be created inside a calendar. Click and drag on a date or time period to prompt the input box. An already created event can be **deleted** by clicking on the event.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot from 2021-12-07 01-24-28.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-26-18 Unifiedtransform.png"></h1>
-
-### 18. Create and view Routines
-Routines can be created for each class and section.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-27-54 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 02-26-21 Unifiedtransform.png"></h1>
-
-### 19. Add Syllabi
-Syllabus for each class and course can be added. Admin can view them from **Classes** page. Syllabus can be downloaded.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 18-14-31 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-55-50 Unifiedtransform.png"></h1>
-
-### 20. Browse by Sessions
-You can browse previous sessions like a snapshot. This mode is **Read only**. Nobody should be able to change the previous sessions' data.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 02-28-23 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-37-02 Unifiedtransform.png"></h1>
-
-### 21. Allow Teachers to submit Final Marks
-Submitting final marks of a semester should be controlled. By enabling this feature, it is possible to open a Mark Submission Window for a short time period. **Default: Disallowed**.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 00-38-37 Unifiedtransform.png"></h1>
-
-### 22. Promote students
-Students can only be promoted to a new class and section when a new Session along with its classes and sections are created.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 02-27-32 Unifiedtransform.png"></h1>
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 02-28-00 Unifiedtransform.png"></h1>
-
-**Role: Teacher**
-
-**Teacher's dashboard**
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-41-04 Unifiedtransform.png"></h1>
-
-### 1. View assigned courses
-Teachers can manage their assigned courses from this page. From this page, teacher can do following:
-
-- Take and view attendance
-- View Syllabus
-- Create and view Assignment
-- Give Marks
-- Message Students (Available in v1.X. Will be added in v2.X as well).
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-41-34 Unifiedtransform.png"></h1>
-
-### 2. Take attendance
-Teacher can take attendance for a section or a course (attendance type set by Admin).
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-51-20 Unifiedtransform.png"></h1>
-
-### 3. View attendance
-Teacher can view attendance.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-52-00 Unifiedtransform.png"></h1>
-
-### 4. View syllabus
-Teacher can view and download syllabus.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-56-20 Unifiedtransform.png"></h1>
-
-### 5. Create assignment
-Teacher can create assignment for an assigned course by uploading files.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-52-27 Unifiedtransform.png"></h1>
-
-### 6. View assignments
-Teacher can view and download created assignments.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-54-12 Unifiedtransform.png"></h1>
-
-### 7. Create Exams
-Before giving marks, teacher needs to create exams and set their rules. Don't have to create all the exams at a time. (Admin can also create exams on behalf of teachers).
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 20-10-30 Unifiedtransform.png"></h1>
-
-### 8. View created exams
-Teacher can view their created exams.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-43-58 Unifiedtransform.png"></h1>
-
-### 9. Add, edit and view exam rules
-Teacher can add, edit, and view exam rules.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-44-24 Unifiedtransform.png"></h1>
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-45-21 Unifiedtransform.png"></h1>
-
-### 10. Give marks
-Teacher can give marks after creating exams. Clicking on the exam names will lead to associated exam rules.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 11-47-50 Unifiedtransform.png"></h1>
-
-### 11. Submit Final Marks
-When the Grade submission window is open, teacher can submit final marks. Calculated marks will be generated based on all exams' marks. Final marks should be in **between** the marks set in the grade rules.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 11-48-01 Unifiedtransform.png"></h1>
-
-If final marks is submitted, a message will be shown in place of submit button in **Give Marks** page.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 11-59-51 Unifiedtransform.png"></h1>
-
-### 12. View Final Results
-Teachers can view final results and calculated grades for a semester, class, section, and course based on their created grade rules.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 13-23-22 Unifiedtransform.png"></h1>
-
-**Role: Student**
-
-**Student dashboard**
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-57-15 Unifiedtransform.png"></h1>
-
-### 1. View attendance
-A student can view his/her attendance.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 11-39-45 Unifiedtransform.png"></h1>
-
-### 2. View courses
-A student can view his/her courses that are assigned in his/her class. From here, a student can do following:
-
-- View Marks
-- View Syllabus
-- View Assignments
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 01-57-57 Unifiedtransform.png"></h1>
-
-### 3. View Marks
-A student can view marks, final results and grade for a course.
-
-<h1 align="center"><img src="public/docs/imgs/ut/Screenshot 2021-12-07 at 13-41-38 Unifiedtransform.png"></h1>
-
-### 4. View and download Syllabus
-Students can view and download syllabi of their courses just like their teachers.
-
-### 5. View and download assignments
-Students can view and download assignments of their courses just like their teachers.
-
-### 6. View routine
-Students can view their class and section routine just like their admin/teachers.
-
-
+   **app/HTTP/Kernel.php**
+   ```php
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+       //\RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
+   ```
+- To create a `Master`, go to the `database\seeds\UsersTableSeeder.php` and change the `name`, the `email` and the `password` settings to your likings. Leave the other settings (role, active, verified) unchanged!
+
+- [Laravel Passport](https://laravel.com/docs/5.5/passport) package is included to support API. *Key* for Passport should be automatically generated by `php artisan passport:keys` from `post-install-cmd` script in `composer.json` or you have to run this manually and to remove this package just follow these steps
+
+  - Remove it from `composer.json` require dependencies and remove command `@php artisan passport:keys` from `post-install-cmd` script
+  - Run `composer update` and `composer dump-autoload`.
+  - And all classes that relies on passport must be edited as well. The most common classes are:
+  - `app\User.php` model, remove the `HasApiToken` trait.
+  - `app\Proiders\AuthServiceProvider`, remove `Passport::routes();` in your boot method.
+  - In `config/auth.php`, change your driver option for `api` from `passport` to `api` authentication.
+
+- To create the tables, run `php artisan migrate`.
+
+  - If you don't want to use **Passport** package then remove the **Passport Migrations** in database `migrations` table and run command `artisan migrate:refresh`
+- To seed the tables with fake data, use `php artisan db:seed`.
+- If you want to run the migration and the seeding together, use `php artisan migrate:refresh --seed`
+- You must seed `database\seeds\UsersTableSeeder.php` at least once in order to create the **Master** account (**For Production:** Run the seed in **Development** environment and then switch to **production**). To do so, follow these steps:
+  - comment all the seeders except `$this->call(UsersTableSeeder::class);` in `database\seeds\DatabaseSeeder.php`;
+  - then comment `factory(App\User::class, 200)->create();` in `UsersTableSeeder.php`.
+
+   So your files will look something like this:
+
+   In `database\seeds\DatabaseSeeder.php`:
+   ```php
+   ...
+   //$this->call(SectionsTableSeeder::class);
+   $this->call(UsersTableSeeder::class);
+   //$this->call(AttendancesTableSeeder::class);
+   ...
+   ```
+   In `database\seeds\UsersTableSeeder.php`:
+   ```php
+   ...
+   //factory(User::class, 10)->states('admin')->create();
+   //factory(User::class, 10)->states('accountant')->create();
+   //factory(User::class, 10)->states('librarian')->create();
+   //factory(User::class, 30)->states('teacher')->create();
+   //factory(User::class, 200)->states('student')->create();
+   ```
+
+* Make Unifiedtransform a native desktop application by using **[Nativefier](https://github.com/jiahaog/nativefier)**
+* [Laravel 5 log viewer](https://github.com/rap2hpoutre/laravel-log-viewer) is used to view Logs using a UI at 'example.com/logs' while in development environment.
+
+## Stripe setup
+
+* Add `STRIPE_KEY` and `STRIPE_SECRET` in `.env` file.
+* For Stripe Test uncomment following test `student_can_pay_amount` in `tests\Feature\PaymentModuleTest` after editing `.env`.
+
+   From
+   ```php
+   //public function student_can_pay_amount(){
+      ...
+   //}
+   ```
+   To
+   ```php
+   public function student_can_pay_amount(){
+      ...
+   }
+   ```
+
+## Create a school and an admin
+
+* Important: only a `master` can create a new school and its admins!
+* Login at `example.com/login` using your `Master` account credentials
+* Create a new `school`
+* Create a new `admin` for the newly created school
+
+## Manage a school
+
+* Important: A `master` CANNOT manage a school's data!
+* Login as `admin` at `example.com/login`
+* Now add data to the school as required.
+
+## Basic Steps by Serial
+
+* Create Classes
+* Create Sections
+* Create Exam
+* Add Students
+* Add Department
+* Add Teachers
+* Add Courses
+* Then teacher can take attendance, give marks
+
+## Manage Exam (In exam manage page) by Admin
+
+1. Check Notice published checkbox for an Exam after uploading Exam Notice.
+2. Check Result published checkbox for an Exam after all teachers updated their courses' marks.
+
+   * Checking result as published sets the Exam as completed.
+3. Exam is set as Active by default while created. You can deactivate the exam by checking related checkbox.
+
+## Manage GPA and Grade
+
+1. Admin adds GPAs for respective mark ranges.
+2. For giving marks, Teacher clicks on Submit Grade button and do the following:
+
+   1. Select a GPA by name from dropdown
+   2. Configure Class Test, Quiz, ...etc. count, percentage (Optional)
+   3. Give marks
+   4. To get Grade of students of a course for given marks, Teacher clicks the Get Total Marks button.
+      (Usually this is done at the end of the semester)
+
+## Give Certificate or Diploma to students
+
+Upon request in issue #258, Certification file upload system has been added.
+
+## Good to know
+
+* Setup your **Mail** configuration in `.env` file if you want to send email. Currently registered users are notified by invitation mail if Mail is configured properly.
+* This project uses [Laravel Impersonate](https://github.com/404labfr/laravel-impersonate) in development and staging environments, so you can view the application through another user's eyes, which is useful for testing. See the guide for using [Impersonation](https://github.com/changeweb/Unifiedtransform/pull/118).
+* In `.env`, turn `APP_DEBUG` to `false` for production environment.
+* Remove `Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');` from `routes/web.php` while in Production Environment.
+* `Cache::remember()` generates cache files. **Removed** ~~To delete expired cache files [LaravelCacheGarbageCollector](https://github.com/jdavidbakr/laravel-cache-garbage-collector) package is used. Run `php artisan cache:gc`.~~
+* You can switch to and from maintenance mode by running `php artisan up` and `php artisan down`.
+* **Optimizing Route** Loading `php artisan route:cache`
+* Dashboard page contents(e.g. Student count, Teacher count, Notice, etc.) are **cached** because these are not frequently changed. If you don't want these to be cached, just remove the cache lines in `index` method in `app\Http\Controller\HomeController.php`like the following example.
+So your edit would be something like this:
+
+From:
+```php
+...
+$classes = \Cache::remember('classes-'.$school_id, $minutes, function () use($school_id) {
+   return \App\Myclass::where('school_id', $school_id)
+                        ->pluck('id')
+                        ->toArray();
+});
+...
+```
+To:
+```php
+...
+$classes = \App\Myclass::where('school_id', $school_id)
+                        ->pluck('id')
+                        ->toArray();
+...
+```
+
+You can do similar for other cache lines.
+
+## Here are some screenshots:
+
+Auto generated fake data were used.
+
+![Screenshot_2019-04-11 - Ms Duane Welch(2)](https://user-images.githubusercontent.com/9896315/56895635-841dad00-6aab-11e9-9400-ec79907b0a28.png)
+![Screenshot_2019-05-11 Stripe Payment - Elvis Leffler](https://user-images.githubusercontent.com/9896315/57566209-b2748400-73eb-11e9-94c0-411a8d55e732.png)
+![Screenshot_2019-04-29 All Examinations - Santino Bergstrom V](https://user-images.githubusercontent.com/9896315/56895608-6ea88300-6aab-11e9-9854-07f553ecb9b8.png)
+![Screenshot_2019-03-21 Account Sectors - Britney Luettgen](https://user-images.githubusercontent.com/9896315/54765196-45cadd80-4c23-11e9-81d2-c761796678c8.png)
+![Screenshot_2019-03-12 Add New Book - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187727-68991b80-44d8-11e9-972b-370a7b4a89b1.png)
+![Screenshot_2019-03-12 Add Routine - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187728-68991b80-44d8-11e9-9655-62b83fe9e4dc.png)
+![Screenshot_2019-03-12 Alba Huel - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187729-6931b200-44d8-11e9-936e-df49e1ca91e6.png)
+![Screenshot_2019-03-12 All Classes and Sections - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187730-6931b200-44d8-11e9-9b8a-f4fd1657ef7d.png)
+![Screenshot_2019-03-12 All Issued Book - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187731-69ca4880-44d8-11e9-98ec-b345a3de3691.png)
+![Screenshot_2019-03-12 Attendance - Arvid Marquardt(1)](https://user-images.githubusercontent.com/9896315/54187732-69ca4880-44d8-11e9-904b-8b3a3c4cff64.png)
+![Screenshot_2019-03-12 Attendance - Arvid Marquardt(2)](https://user-images.githubusercontent.com/9896315/54187733-6a62df00-44d8-11e9-8c25-4598df4d9346.png)
+![Screenshot_2019-03-12 Attendance - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187734-6a62df00-44d8-11e9-9242-78b6fb805eda.png)
+![Screenshot_2019-03-12 Course - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187735-6afb7580-44d8-11e9-99c0-6095b98f432e.png)
+![Screenshot_2019-04-06 Course Students - Prof Buddy Hermann](https://user-images.githubusercontent.com/9896315/55671336-f3d7b800-58b0-11e9-984e-8ae8f635bc42.png)
+![Screenshot_2019-04-06 Messages - Prof Buddy Hermann](https://user-images.githubusercontent.com/9896315/55671126-5aa7a200-58ae-11e9-82e8-60e532a08883.png)
+![Screenshot_2019-03-29 Grade - Deron Ruecker DDS](https://user-images.githubusercontent.com/9896315/55222646-a4511680-5236-11e9-89f0-606df40c1a6b.png)
+![Screenshot_2019-03-12 Manage Schools - Arvid Marquardt(3)](https://user-images.githubusercontent.com/9896315/54187739-6b940c00-44d8-11e9-83c0-fb06cbd3c316.png)
+![Screenshot_2019-03-12 Manage Schools - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187740-6c2ca280-44d8-11e9-93b1-a998ac1cd585.png)
+![Screenshot_2019-03-12 Promote Section Students - Arvid Marquardt(1)](https://user-images.githubusercontent.com/9896315/54187741-6c2ca280-44d8-11e9-871a-51148b27c2b4.png)
+![Screenshot_2019-03-12 Students - Arvid Marquardt](https://user-images.githubusercontent.com/9896315/54187744-6cc53900-44d8-11e9-9ad4-c1acc58fe6a2.png)
+![Screenshot_2020-07-24 Give Certificate - Ruthie Gorczany](https://user-images.githubusercontent.com/9896315/88412643-b5467380-cdfb-11ea-88da-45afa2756e64.png)
+![Screenshot_2020-07-24 My Certificates - Ruthie Gorczany](https://user-images.githubusercontent.com/9896315/88412655-b677a080-cdfb-11ea-8ca4-62407d39f61f.png)
